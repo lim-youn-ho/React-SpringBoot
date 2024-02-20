@@ -1,19 +1,19 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import Login from "./components/Login";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import ReactDOM from 'react-dom/client';
 
 function App() {
-  const [hello, setHello] = useState('')
 
-  useEffect(() => {
-    axios.get('/api/hello')
-        .then(response => setHello(response.data))
-        .catch(error => console.log(error))
-  }, []);
 
   return (
       <div>
-        백엔드에서 가져온 연결 데이터 : {hello}
+          <Router>
+                  <Routes>
+                      <Route path="/" element={<Login />} />
+                  </Routes>
+         </Router>
       </div>
   );
 }
